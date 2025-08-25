@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  eco-bot:
+    build: .
+    container_name: my-eco-bot
+    env_file:
+      - .env                   # Берём токен бота и переменные из файла .env
+    volumes:
+      - ./photos:/app/photos   # Монтируем локальную папку photos внутрь контейнера
+    restart: unless-stopped     # Автоматически перезапускать бот, если контейнер упадёт
